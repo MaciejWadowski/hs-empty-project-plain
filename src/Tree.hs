@@ -19,7 +19,8 @@ empty EmptyTree = True
 empty (Node a left right) = False
 
 isBinary::(Tree a) -> Bool
-isBinary (Tree a) = True
+isBinary EmptyTree = True
+isBinary (Node a left right) = True
 
 search::(Ord a) => a -> (Tree a) -> Bool
 search x EmptyTree = False
