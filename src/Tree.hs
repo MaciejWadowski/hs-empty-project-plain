@@ -37,3 +37,13 @@ isBalanced::(Tree a) -> Bool
 isBalanced EmptyTree = True
 isBalanced (Node a left right) = (abs ((nnodes left) - (nnodes right))) <= 1
 
+traverseTree::String -> (Tree a) -> [a]
+traverseTree x EmptyTree = []
+traverseTree x (Node a left right)
+          | x == "LVR" = (traverseTree x left) ++ [a] ++ (traverseTree x right)
+          | x == "VLR" = [a] ++ (traverseTree x left) ++ (traverseTree x right)
+          | x == "LRV" = (traverseTree x left) ++ (traverseTree x right) ++ [a]
+          | x == "VRL" = [a] ++ (traverseTree x right) ++ (traverseTree x left)
+          | x == "RVL" = (traverseTree x right) ++ [a] ++ (traverseTree x left)
+          | x == "RLV" = (traverseTree x right) ++ (traverseTree x left) ++ [a]
+          | otherwise = error "Invalid String Argument"
