@@ -58,3 +58,29 @@ leaves x = traverseTree "LVR" x
 nsum::(Num a) => (Tree a) -> a
 nsum EmptyTree = 0
 nsum (Node a left right) = a + (nsum left) + (nsum right)
+
+tmap::(a -> b) -> (Tree a) -> (Tree b)
+tmap x EmptyTree = EmptyTree
+tmap x (Node a left right) = Node (x a) (tmap x left) (tmap x right)
+
+findMin::(Ord a) => (Tree a) -> a
+findMin (Node a left right)
+    | left == EmptyTree = a
+    | otherwise = findMin left
+
+remove::(Ord a) => a -> (Tree a) -> (Tree a)
+remove x EmptyTree = EmptyTree
+remove x (Node a left right)
+        | x < a = Node a (remove x left) right
+        | x > a = Node a left (remove x right)
+        | x == a && left == EmptyTree && right == EmptyTree = EmptyTree
+        | x == a && left == EmptyTree = right
+        | x == a && right == EmptyTree = left
+        | x == a = Node (findMin right) left (remove (findMin right) right)
+
+{-
+merge::(Ord a) => (Tree a) -> (Tree a) -> (Tree a)
+merge EmptyTree EmptyTree = EmptyTree
+merge (Node a left right) EmptyTree = Node a left right
+merge EmptyTree (Node a left right) = Node a left right
+-}
