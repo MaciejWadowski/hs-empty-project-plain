@@ -28,3 +28,12 @@ search x (Node a left right)
        | x == a = True
        | x > a = search x right
        | x < a = search x left
+
+nnodes::(Tree a) -> Int
+nnodes EmptyTree = 0
+nnodes (Node a left right) = 1 + (nnodes left) + (nnodes right)
+
+isBalanced::(Tree a) -> Bool
+isBalanced EmptyTree = True
+isBalanced (Node a left right) = (abs ((nnodes left) - (nnodes right))) <= 1
+
