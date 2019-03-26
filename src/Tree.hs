@@ -47,3 +47,14 @@ traverseTree x (Node a left right)
           | x == "RVL" = (traverseTree x right) ++ [a] ++ (traverseTree x left)
           | x == "RLV" = (traverseTree x right) ++ (traverseTree x left) ++ [a]
           | otherwise = error "Invalid String Argument"
+
+toString::(Show a) => (Tree a) -> String
+toString EmptyTree = ""
+toString (Node a left right) = (show a) ++ "(" ++ (toString left) ++ "," ++ (toString right) ++ ")"
+
+leaves::(Tree a) -> [a]
+leaves x = traverseTree "LVR" x
+
+nsum::(Num a) => (Tree a) -> a
+nsum EmptyTree = 0
+nsum (Node a left right) = a + (nsum left) + (nsum right)
