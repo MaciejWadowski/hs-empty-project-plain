@@ -17,3 +17,13 @@ insert x (Node a left right)
 empty::(Tree a) -> Bool
 empty EmptyTree = True
 empty (Node a left right) = False
+
+isBinary::(Tree a) -> Bool
+isBinary (Tree a) = True
+
+search::(Ord a) => a -> (Tree a) -> Bool
+search x EmptyTree = False
+search x (Node a left right)
+       | x == a = True
+       | x > a = search x right
+       | x < a = search x left
