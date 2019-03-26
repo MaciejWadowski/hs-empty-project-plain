@@ -5,3 +5,7 @@ hs-empty-project-plain.cabal
 cabal.sandbox.config
 
 .idea/
+
+*.o
+*.dyn_hi
+*.dyn_o
