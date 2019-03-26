@@ -13,3 +13,7 @@ insert x (Node a left right)
       | x == a = Node x left right
       | x > a =  Node a left (insert x right)
       | x < a = Node a (insert x left) right
+
+empty::(Tree a) -> Bool
+empty EmptyTree = True
+empty (Node a left right) = False
