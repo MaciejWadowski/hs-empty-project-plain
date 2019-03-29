@@ -7,37 +7,37 @@ data Tree a = EmptyTree
 singleton :: a -> Tree a
 singleton x = Node x EmptyTree EmptyTree
 
-insert::(Ord a) => a -> (Tree a) -> (Tree a)
+insert :: (Ord a) => a -> (Tree a) -> (Tree a)
 insert x EmptyTree = singleton x
 insert x (Node a left right)
       | x == a = Node x left right
       | x > a =  Node a left (insert x right)
       | x < a = Node a (insert x left) right
 
-empty::(Tree a) -> Bool
+empty :: (Tree a) -> Bool
 empty EmptyTree = True
 empty (Node a left right) = False
 
-isBinary::(Tree a) -> Bool
+isBinary :: (Tree a) -> Bool
 isBinary EmptyTree = True
 isBinary (Node a left right) = True
 
-search::(Ord a) => a -> (Tree a) -> Bool
+search :: (Ord a) => a -> (Tree a) -> Bool
 search x EmptyTree = False
 search x (Node a left right)
        | x == a = True
        | x > a = search x right
        | x < a = search x left
 
-nnodes::(Tree a) -> Int
+nnodes :: (Tree a) -> Int
 nnodes EmptyTree = 0
 nnodes (Node a left right) = 1 + (nnodes left) + (nnodes right)
 
-isBalanced::(Tree a) -> Bool
+isBalanced :: (Tree a) -> Bool
 isBalanced EmptyTree = True
 isBalanced (Node a left right) = (abs ((nnodes left) - (nnodes right))) <= 1
 
-traverseTree::String -> (Tree a) -> [a]
+traverseTree :: String -> (Tree a) -> [a]
 traverseTree x EmptyTree = []
 traverseTree x (Node a left right)
           | x == "LVR" = (traverseTree x left) ++ [a] ++ (traverseTree x right)
@@ -48,27 +48,31 @@ traverseTree x (Node a left right)
           | x == "RLV" = (traverseTree x right) ++ (traverseTree x left) ++ [a]
           | otherwise = error "Invalid String Argument"
 
-toString::(Show a) => (Tree a) -> String
+toString :: (Show a) => (Tree a) -> String
 toString EmptyTree = ""
 toString (Node a left right) = (show a) ++ "(" ++ (toString left) ++ "," ++ (toString right) ++ ")"
 
-leaves::(Tree a) -> [a]
-leaves x = traverseTree "LVR" x
+leaves :: (Eq a) => (Tree a) -> [a]
+leaves EmptyTree = []
+leaves (Node a EmptyTree EmptyTree) = [a]
+leaves (Node a EmptyTree right) = leaves right
+leaves (Node a left EmptyTree) = leaves left
+leaves (Node a left right) = leaves left ++ leaves right
 
-nsum::(Num a) => (Tree a) -> a
+nsum :: (Num a) => (Tree a) -> a
 nsum EmptyTree = 0
 nsum (Node a left right) = a + (nsum left) + (nsum right)
 
-tmap::(a -> b) -> (Tree a) -> (Tree b)
+tmap :: (a -> b) -> (Tree a) -> (Tree b)
 tmap x EmptyTree = EmptyTree
 tmap x (Node a left right) = Node (x a) (tmap x left) (tmap x right)
 
-findMin::(Ord a) => (Tree a) -> a
+findMin :: (Ord a) => (Tree a) -> a
 findMin (Node a left right)
     | left == EmptyTree = a
     | otherwise = findMin left
 
-remove::(Ord a) => a -> (Tree a) -> (Tree a)
+remove :: (Ord a) => a -> (Tree a) -> (Tree a)
 remove x EmptyTree = EmptyTree
 remove x (Node a left right)
         | x < a = Node a (remove x left) right
@@ -78,9 +82,8 @@ remove x (Node a left right)
         | x == a && right == EmptyTree = left
         | x == a = Node (findMin right) left (remove (findMin right) right)
 
-{-
-merge::(Ord a) => (Tree a) -> (Tree a) -> (Tree a)
+merge :: (Ord a) => (Tree a) -> (Tree a) -> (Tree a)
 merge EmptyTree EmptyTree = EmptyTree
-merge (Node a left right) EmptyTree = Node a left right
-merge EmptyTree (Node a left right) = Node a left right
--}
+merge x EmptyTree = x
+merge EmptyTree x = x
+merge left right = merge (insert (findMin right) left) (remove (findMin right) right)
