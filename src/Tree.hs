@@ -87,4 +87,3 @@ merge EmptyTree EmptyTree = EmptyTree
 merge x EmptyTree = x
 merge EmptyTree x = x
 merge left right = merge (insert (findMin right) left) (remove (findMin right) right)
->>>>>>> 3ab7efc56c851c6d323d8936f40b3780a06b8f18
