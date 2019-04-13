@@ -27,5 +27,14 @@ mapToTuple [] b = []
 studentConvert' :: SortedStudents -> Student -> SortedStudents
 studentConvert' list stud = list ++ [((length list)+1, stud)]
 
-studentsToString :: String -> SortedStudents -> String
-studentsToString str () =  
+formatStudents :: SortedStudents -> String
+formatStudents ((x1,x2):xs) = show x1 ++ ". student: " ++ (lastName x2) ++ " "  ++ [head (firstName x2)]++ ". wiek " ++ show (age x2) ++ "\n" ++ formatStudents xs
+formatStudents [] = []
+
+convertToHtml :: [Student] -> String
+convertToHtml list =  "<table>\n  <tr>\n    <th>FirstName</th>\n    <th>LastName</th>\n    <th>Age</th>\n  </tr>\n" ++ convertSortedStudents list ++ "</table>\n"
+
+convertSortedStudents :: [Student] -> String
+convertSortedStudents [] = []
+convertSortedStudents (x:xs) = "  <tr>\n   <td>" ++ firstName x ++ "</td>\n    <td>" ++ lastName x ++ "</td>\n    <td>" ++ show (age x) ++ "</td>\n  </tr>\n" ++ convertSortedStudents xs
+

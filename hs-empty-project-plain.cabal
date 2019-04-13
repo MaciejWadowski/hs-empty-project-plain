@@ -27,13 +27,13 @@ source-repository head
 
 library
   exposed-modules:
-      Lib, Student, Tree
+      Lib, Student, Tree, MyLib
   other-modules:
       Paths_hs_empty_project_plain
   hs-source-dirs:
       src
   build-depends:
-      base >=4.7 && <5
+      base >=4.7 && <5, containers, heap==1.0.2
   default-language: Haskell2010
 
 executable hs-empty-project-plain-exe

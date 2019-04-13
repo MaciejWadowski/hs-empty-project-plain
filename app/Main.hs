@@ -1,6 +1,10 @@
 module Main where
 
-import Lib
+import qualified MyLib
 
 main :: IO ()
-main = someFunc
+main = do
+    putStrLn "Program wypisuje ilosc slow z pliku"
+    content <- readFile "file.txt"
+    let result = MyLib.processFile content
+    print result

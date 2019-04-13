@@ -9,3 +9,4 @@ cabal.sandbox.config
 *.o
 *.dyn_hi
 *.dyn_o
+file.txt
