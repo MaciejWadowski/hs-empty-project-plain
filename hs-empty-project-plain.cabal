@@ -23,11 +23,11 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/hs-empty-project-plain
+  location: https://github.com/MaciejWadowski/hs-empty-project-plain
 
 library
   exposed-modules:
-      Lib, Student, Tree, MyLib
+      Lib, Student, Tree, MyLib, KMers
   other-modules:
       Paths_hs_empty_project_plain
   hs-source-dirs:

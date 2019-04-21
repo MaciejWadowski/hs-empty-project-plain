@@ -16,3 +16,4 @@ and' x = foldl (&&) True x
 
 or' :: [Bool] -> Bool
 or' x = foldl (||) False x
+
