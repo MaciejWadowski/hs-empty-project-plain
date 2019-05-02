@@ -2,11 +2,19 @@ module Tree where
 
 data Tree a = EmptyTree
               | Node a (Tree a) (Tree a)
-              deriving(Show, Eq)
+              deriving(Show)
 
 singleton :: a -> Tree a
 singleton x = Node x EmptyTree EmptyTree
 
+instance (Eq a) => (Eq (Tree a)) where 
+    (Node val1 left1 right1) == (Node val left right) = (val == val1) && (left == left1) && (right == right1)
+    EmptyTree == EmptyTree = True
+    _ == _ = False
+    (Node val1 left1 right1) /= (Node val left right) = (val /= val1) || (left /= left1) || (right /= right1)
+    EmptyTree /= EmptyTree = False
+    _ /= _ = True
+    
 insert :: (Ord a) => a -> (Tree a) -> (Tree a)
 insert x EmptyTree = singleton x
 insert x (Node a left right)

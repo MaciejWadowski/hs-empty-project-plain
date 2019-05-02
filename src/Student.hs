@@ -3,12 +3,17 @@ module Student where
 data Student = Student {
                firstName::String,
                lastName::String,
-               age::Int} deriving (Show, Read, Eq)
+               age::Int} deriving (Show, Read)
 
 fullName :: Student -> String
 fullName student = firstName student ++ " " ++ lastName student
 
 type SortedStudents =  [(Int, Student)]
+
+instance Eq Student where 
+    (Student fn ln a) == (Student fn1 ln1 a1) = (fn == fn1) && (ln == ln1) && (a == a1)
+    (Student fn ln a) /= (Student fn1 ln1 a1) = (fn /= fn1) || (ln /= ln1) || (a == a1)
+
 
 setAge :: Int -> Student -> Student
 setAge x (Student firstName lastName age) = Student firstName lastName x
