@@ -1,6 +1,6 @@
 module Tree where
 
-import Control.Applicative
+import qualified  Control.Applicative
 
 data Tree a = EmptyTree
               | Node a (Tree a) (Tree a)

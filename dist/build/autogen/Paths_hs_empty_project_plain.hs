@@ -30,7 +30,7 @@ version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
 bindir     = "/home/maciej/IdeaProjects/hs-empty-project-plain/.cabal-sandbox/bin"
-libdir     = "/home/maciej/IdeaProjects/hs-empty-project-plain/.cabal-sandbox/lib/x86_64-linux-ghc-8.0.2/hs-empty-project-plain-0.1.0.0-CDeahLdI0TG8v9f5xVoFqn"
+libdir     = "/home/maciej/IdeaProjects/hs-empty-project-plain/.cabal-sandbox/lib/x86_64-linux-ghc-8.0.2/hs-empty-project-plain-0.1.0.0-LalSpFYVZoxFtOh7Wq3K6S"
 dynlibdir  = "/home/maciej/IdeaProjects/hs-empty-project-plain/.cabal-sandbox/lib/x86_64-linux-ghc-8.0.2"
 datadir    = "/home/maciej/IdeaProjects/hs-empty-project-plain/.cabal-sandbox/share/x86_64-linux-ghc-8.0.2/hs-empty-project-plain-0.1.0.0"
 libexecdir = "/home/maciej/IdeaProjects/hs-empty-project-plain/.cabal-sandbox/libexec"
