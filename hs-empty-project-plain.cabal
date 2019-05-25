@@ -27,7 +27,7 @@ source-repository head
 
 library
   exposed-modules:
-      Lib, Student, Tree, MyLib, KMers
+      Lib, Student, Tree, MyLib, KMers, StudentApp
   other-modules:
       Paths_hs_empty_project_plain
   hs-source-dirs:

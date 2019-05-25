@@ -31,10 +31,6 @@ instance Applicative Tree where
     pure x = Node x EmptyTree EmptyTree
     (Node f leftf rightf) <*> (Node a left right) = Node (f a)  (leftf <*> left)  (rightf <*> right)
     _ <*> _ = EmptyTree
---    liftA2 f (Node a left1 right1) (Node b left2 right2) = Node (f a b) (liftA2 left1 left2) (liftA2 right1 right2)
---    liftA2 f (Node a left right) _ = Node (f a b) left right
---    liftA2 f _ (Node a left right) = Node (f a b) left right
---    liftA2 f _ _ = EmptyTree
 
 insert :: (Ord a) => a -> (Tree a) -> (Tree a)
 insert x EmptyTree = singleton x
