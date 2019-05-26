@@ -50,4 +50,4 @@ delete id ((Student name age id'):xs)
     | otherwise = (Student name age id'):(delete id xs)
 
 quit :: Action
-quit _ = exitFailure
+quit _ = exitSuccess

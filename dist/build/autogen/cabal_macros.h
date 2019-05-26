@@ -7,6 +7,20 @@
   (major1) == 0 && (major2) <  1 || \
   (major1) == 0 && (major2) == 1 && (minor) <= 0)
 
+/* package HDBC-2.4.0.2 */
+#define VERSION_HDBC "2.4.0.2"
+#define MIN_VERSION_HDBC(major1,major2,minor) (\
+  (major1) <  2 || \
+  (major1) == 2 && (major2) <  4 || \
+  (major1) == 2 && (major2) == 4 && (minor) <= 0)
+
+/* package HDBC-sqlite3-2.3.3.1 */
+#define VERSION_HDBC_sqlite3 "2.3.3.1"
+#define MIN_VERSION_HDBC_sqlite3(major1,major2,minor) (\
+  (major1) <  2 || \
+  (major1) == 2 && (major2) <  3 || \
+  (major1) == 2 && (major2) == 3 && (minor) <= 3)
+
 /* package aeson-1.4.3.0 */
 #define VERSION_aeson "1.4.3.0"
 #define MIN_VERSION_aeson(major1,major2,minor) (\
@@ -126,7 +140,7 @@
   (major1) == 2 && (major2) <  30 || \
   (major1) == 2 && (major2) == 30 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "hs-empty-project-plain-0.1.0.0-LalSpFYVZoxFtOh7Wq3K6S"
+#define CURRENT_COMPONENT_ID "hs-empty-project-plain-0.1.0.0-3sUGMC6zitbF2qmVihn85d"
 
-#define CURRENT_PACKAGE_KEY "hs-empty-project-plain-0.1.0.0-LalSpFYVZoxFtOh7Wq3K6S"
+#define CURRENT_PACKAGE_KEY "hs-empty-project-plain-0.1.0.0-3sUGMC6zitbF2qmVihn85d"
 
